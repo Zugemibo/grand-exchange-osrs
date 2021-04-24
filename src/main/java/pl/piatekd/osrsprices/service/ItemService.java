@@ -1,23 +1,19 @@
 package pl.piatekd.osrsprices.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import pl.piatekd.osrsprices.model.Item;
 import pl.piatekd.osrsprices.repository.ItemRepository;
 
-@Service
-public class ItemService {
+public interface ItemService {
 	
-	private final ItemRepository itemRepository;
-	
-	
-	public ItemService(ItemRepository itemRepository) {
-		this.itemRepository = itemRepository;
-	}
 
+	public Item findByName(String name);
 
-	public Item findByName(String name) {
-		return itemRepository.findItemByItemName(name);
-	}
+	public List<Item> findAll();
+
+	public int findByIdName(String itemName);
 
 }
