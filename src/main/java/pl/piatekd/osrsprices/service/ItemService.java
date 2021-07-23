@@ -1,19 +1,27 @@
 package pl.piatekd.osrsprices.service;
 
+import pl.piatekd.osrsprices.dto.ItemDTO;
+import pl.piatekd.osrsprices.model.Item;
+
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
-import pl.piatekd.osrsprices.model.Item;
-import pl.piatekd.osrsprices.repository.ItemRepository;
-
 public interface ItemService {
-	
 
-	public Item findByName(String name);
+	List<Item> findAll();
 
-	public List<Item> findAll();
+    void saveAll(List<Item> itemList);
 
-	public int findByIdName(String itemName);
+	Item findItemById(Long itemId);
 
+	List<Long> getAllIds();
+
+	List<ItemDTO> getItemByName(String itemName);
+
+	ItemDTO getSingleItemByName(String itemName);
+
+    List<ItemDTO> getItemsWithLargestMargin();
+
+	List<ItemDTO> getItemsWithLargestPercentageMargin();
+
+	List<ItemDTO> getBestHighAlchItems();
 }

@@ -8,17 +8,17 @@ import org.springframework.web.client.RestTemplate;
 
 @Configuration
 public class RestTemplateConfig {
-	
-	@Value("${userAgent}")
+
+    @Value("${userAgent}")
     private String userAgent;
 
-	@Bean
-	public RestTemplate restTemplate() {
-		RestTemplate restTemplate = new RestTemplateBuilder(rt-> rt.getInterceptors().add((request, body, execution) -> {
-	        request.getHeaders().add("User-Agent", userAgent);
-	        return execution.execute(request, body);
-	    })).build();
-		return restTemplate;
+    @Bean
+    public RestTemplate restTemplate() {
+        RestTemplate restTemplate = new RestTemplateBuilder(rt -> rt.getInterceptors().add((request, body, execution) -> {
+            request.getHeaders().add("User-Agent", userAgent);
+            return execution.execute(request, body);
+        })).build();
+        return restTemplate;
 
-	}
+    }
 }
