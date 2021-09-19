@@ -19,18 +19,18 @@ public class Item {
     private int lowPriceTime;
     private long margin;
     private double percentageMargin;
-    @OneToOne
-    @JoinColumn(name = "id")
-    @JsonBackReference
-    private AdditionalInfo additionalInfo;
+//    @OneToOne
+//    @JoinColumn(name = "id")
+//    @JsonBackReference
+//    private AdditionalInfo additionalInfo;
 
-    public AdditionalInfo getAdditionalInfo() {
-        return additionalInfo;
-    }
-
-    public void setAdditionalInfo(AdditionalInfo additionalInfo) {
-        this.additionalInfo = additionalInfo;
-    }
+//    public AdditionalInfo getAdditionalInfo() {
+//        return additionalInfo;
+//    }
+//
+//    public void setAdditionalInfo(AdditionalInfo additionalInfo) {
+//        this.additionalInfo = additionalInfo;
+//    }
 
     public Long getId() {
         return id;
@@ -118,8 +118,8 @@ public class Item {
         else return 0;
     }
 
-    private double setPercantageMargin(long margin, int highPrice){
-        if(margin!= 0 && highPrice!= 0){
+    private double setPercantageMargin(long margin, Integer highPrice){
+        if(margin!= 0 && highPrice!= 0 && highPrice != null){
             double percantageMargin = (double) margin/highPrice;
             return percantageMargin * 100;
         }

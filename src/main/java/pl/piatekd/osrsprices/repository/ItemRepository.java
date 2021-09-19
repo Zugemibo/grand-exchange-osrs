@@ -28,4 +28,7 @@ public interface ItemRepository extends JpaRepository<Item, Long>{
 
     @Query(value = "select new pl.piatekd.osrsprices.dto.ItemDTO(ai.name, i.highPrice , i.highPriceTime, i.lowPrice, i.lowPriceTime, i.margin, i.percentageMargin) from Item i join AdditionalInfo ai on (i.id = ai.id) order by i.margin desc")
     List<ItemDTO> getItemsWithLargestMargin();
+
+    @Query("select i.highPrice from Item i WHERE i.id = ?1")
+    int getHighPriceById(Long itemId);
 }

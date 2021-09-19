@@ -7,6 +7,7 @@ import pl.piatekd.osrsprices.exception.ItemNotFoundException;
 import pl.piatekd.osrsprices.service.ItemService;
 
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -56,15 +57,6 @@ public class ItemController {
     public List<ItemDTO> getItemsWithLargestPercentageMargin() {
         try {
             return itemService.getItemsWithLargestPercentageMargin();
-        } catch (Exception e) {
-            throw new ItemNotFoundException();
-        }
-    }
-
-    @GetMapping("/highAlch")
-    public List<ItemDTO> getBestHighAlchItems() {
-        try {
-            return itemService.getBestHighAlchItems();
         } catch (Exception e) {
             throw new ItemNotFoundException();
         }

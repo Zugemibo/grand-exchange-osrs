@@ -5,6 +5,8 @@ import pl.piatekd.osrsprices.dto.ItemDTO;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Repository

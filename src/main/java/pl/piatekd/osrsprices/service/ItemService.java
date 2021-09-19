@@ -3,6 +3,7 @@ package pl.piatekd.osrsprices.service;
 import pl.piatekd.osrsprices.dto.ItemDTO;
 import pl.piatekd.osrsprices.model.Item;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface ItemService {

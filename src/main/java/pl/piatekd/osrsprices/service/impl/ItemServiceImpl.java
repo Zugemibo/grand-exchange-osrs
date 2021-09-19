@@ -1,5 +1,6 @@
 package pl.piatekd.osrsprices.service.impl;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.stereotype.Service;

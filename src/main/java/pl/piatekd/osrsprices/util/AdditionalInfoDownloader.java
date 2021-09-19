@@ -35,15 +35,21 @@
 //
 //        for (Long itemId : itemIdList) {
 //            AdditionalInfo additionalInfo = restTemplate.getForObject("https://www.osrsbox.com/osrsbox-db/items-json/" + itemId + ".json", AdditionalInfo.class);
-//
+//            System.out.println(additionalInfo);
 //            System.out.println("Zapisuje " + itemId);
-//            additionalInfoService.save(additionalInfo);
+//            try {
+//                additionalInfoService.save(additionalInfo);
+//            }catch (Exception e){
+//                throw new RuntimeException("Error during saving additional information for item ID: " + itemId + e.getMessage());
+//            }
 //        }
 //
 //    }
 //
 //    public List<Long> getIdList() {
-//        return itemService.getAllIds();
+//        List<Long> itemIdList = itemService.getAllIds();
+//        System.out.println("Item count: " + itemIdList.size());
+//        return itemIdList;
 //    }
 //
 //

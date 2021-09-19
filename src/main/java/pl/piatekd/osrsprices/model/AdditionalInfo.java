@@ -55,20 +55,24 @@ public class AdditionalInfo {
     private String wikiName;
     @JsonProperty("wiki_url")
     private String wikiUrl;
-    @OneToOne(mappedBy = "additionalInfo", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY, optional = false)
-    @JsonManagedReference
-    private Item item;
+    @JsonProperty("icon")
+    @Lob
+    @Column(name = "icon", columnDefinition="BLOB")
+    private byte[] icon;
+//    @OneToOne(mappedBy = "additionalInfo", cascade = CascadeType.ALL,
+//            fetch = FetchType.LAZY, optional = false)
+//    @JsonManagedReference
+//    private Item item;
 
-    public Item getItem() {
-        return item;
-    }
+//    public Item getItem() {
+//        return item;
+//    }
+//
+//    public void setItem(Item item) {
+//        this.item = item;
+//    }
 
-    public void setItem(Item item) {
-        this.item = item;
-    }
-
-    public AdditionalInfo(Long id, boolean members, boolean tradeable, boolean tradeableOnGe, boolean stackable, boolean noted, boolean noteable, boolean equipable, boolean equipableByPlayer, boolean equipableWeapon, int cost, int lowAlch, int highAlch, int weight, int buyLimit, boolean questItem, Date releaseDate, boolean duplicate, String description, String wikiName, String wikiUrl) {
+    public AdditionalInfo(Long id, boolean members, boolean tradeable, boolean tradeableOnGe, boolean stackable, boolean noted, boolean noteable, boolean equipable, boolean equipableByPlayer, boolean equipableWeapon, int cost, int lowAlch, int highAlch, int weight, int buyLimit, boolean questItem, Date releaseDate, boolean duplicate, String description, String wikiName, String wikiUrl, byte[] icon) {
         this.id = id;
         this.members = members;
         this.tradeable = tradeable;
@@ -90,6 +94,7 @@ public class AdditionalInfo {
         this.description = description;
         this.wikiName = wikiName;
         this.wikiUrl = wikiUrl;
+        this.icon = icon;
     }
 
     public AdditionalInfo() {
@@ -263,10 +268,27 @@ public class AdditionalInfo {
         this.wikiUrl = wikiUrl;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public byte[] getIcon() {
+        return icon;
+    }
+
+    public void setIcon(byte[] icon) {
+        this.icon = icon;
+    }
+
     @Override
     public String toString() {
         return "AdditionalInfo{" +
                 "id=" + id +
+                ", name='" + name + '\'' +
                 ", members=" + members +
                 ", tradeable=" + tradeable +
                 ", tradeableOnGe=" + tradeableOnGe +
@@ -287,6 +309,7 @@ public class AdditionalInfo {
                 ", description='" + description + '\'' +
                 ", wikiName='" + wikiName + '\'' +
                 ", wikiUrl='" + wikiUrl + '\'' +
+                ", icon='" + icon + '\'' +
                 '}';
     }
 }

@@ -21,9 +21,15 @@ public class SpringConfig {
 
 
     @Scheduled(fixedDelay = 120000)
-    public void scheduleFixedDelayTask() throws Exception {
+    public void scheduleItemPrices() throws Exception {
         if (enabled) {
-            resourceManager.getDataFromApi();
+            resourceManager.getLatestDataPrices();
+        }
+    }
+    @Scheduled(fixedDelay = 36000000)
+    public void scheduleItemTradeVolumes() throws Exception {
+        if (enabled) {
+            resourceManager.getLatestDataVolumes();
         }
     }
 
