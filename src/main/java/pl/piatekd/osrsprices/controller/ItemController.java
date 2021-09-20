@@ -18,7 +18,6 @@ public class ItemController {
     private static final String BASE_URL = "https://prices.runescape.wiki/api/v1/osrs/";
 
     private final ItemService itemService;
-
     private final RestTemplate template;
 
     public ItemController(ItemService itemService, RestTemplate template) {

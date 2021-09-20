@@ -11,9 +11,21 @@ public class ItemDTO {
     private String itemLowPriceTime;
     private long margin;
     private double percentageMargin;
+    private int buyLimit;
 
 
     public ItemDTO() {
+    }
+
+    public ItemDTO(String name, int itemHighPrice, int itemHighPriceTime, int itemLowPrice, int itemLowPriceTime, long margin, double percentageMargin, int buyLimit) {
+        this.name = name;
+        this.itemHighPrice = itemHighPrice;
+        this.itemHighPriceTime = TimeConverter.timestampToDate(itemHighPriceTime);
+        this.itemLowPrice = itemLowPrice;
+        this.itemLowPriceTime = TimeConverter.timestampToDate(itemLowPriceTime);
+        this.margin = margin;
+        this.percentageMargin = percentageMargin;
+        this.buyLimit = buyLimit;
     }
 
     public ItemDTO(String name, int itemHighPrice, int itemHighPriceTime, int itemLowPrice, int itemLowPriceTime, long margin, double percentageMargin) {
@@ -80,5 +92,13 @@ public class ItemDTO {
 
     public void setPercentageMargin(double percentageMargin) {
         this.percentageMargin = percentageMargin;
+    }
+
+    public int getBuyLimit() {
+        return buyLimit;
+    }
+
+    public void setBuyLimit(int buyLimit) {
+        this.buyLimit = buyLimit;
     }
 }

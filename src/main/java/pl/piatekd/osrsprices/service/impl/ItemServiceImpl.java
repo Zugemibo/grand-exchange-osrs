@@ -68,5 +68,10 @@ public class ItemServiceImpl implements ItemService {
 		return itemRepositoryImpl.getBestHighAlchItems();
 	}
 
+	@Override
+	public List<ItemDTO> getHighVolumeItems() {
+		return itemRepositoryImpl.getHighVolumeItems();
+	}
+
 
 }

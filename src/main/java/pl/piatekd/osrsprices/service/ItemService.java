@@ -25,4 +25,6 @@ public interface ItemService {
 	List<ItemDTO> getItemsWithLargestPercentageMargin();
 
 	List<ItemDTO> getBestHighAlchItems();
+
+    List<ItemDTO> getHighVolumeItems();
 }
