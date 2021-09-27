@@ -25,15 +25,6 @@ public class ItemController {
         this.template = template;
     }
 
-    @GetMapping("/{itemName}")
-    public ItemDTO getItemByName(@PathVariable String itemName) {
-        try {
-            return itemService.getSingleItemByName(itemName);
-        } catch (Exception e) {
-            throw new ItemNotFoundException();
-        }
-    }
-
     @GetMapping("/list/{itemName}")
     public List<ItemDTO> getItemListByName(@PathVariable String itemName) {
         try {
@@ -56,6 +47,15 @@ public class ItemController {
     public List<ItemDTO> getItemsWithLargestPercentageMargin() {
         try {
             return itemService.getItemsWithLargestPercentageMargin();
+        } catch (Exception e) {
+            throw new ItemNotFoundException();
+        }
+    }
+
+    @GetMapping("/suggestedItems")
+    public List<ItemDTO> getSuggestedItems() {
+        try {
+            return itemService.getSuggestedItems();
         } catch (Exception e) {
             throw new ItemNotFoundException();
         }

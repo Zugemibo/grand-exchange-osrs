@@ -18,8 +18,6 @@ public interface ItemService {
 
 	List<ItemDTO> getItemByName(String itemName);
 
-	ItemDTO getSingleItemByName(String itemName);
-
     List<ItemDTO> getItemsWithLargestMargin();
 
 	List<ItemDTO> getItemsWithLargestPercentageMargin();
@@ -27,4 +25,6 @@ public interface ItemService {
 	List<ItemDTO> getBestHighAlchItems();
 
     List<ItemDTO> getHighVolumeItems();
+
+	List<ItemDTO> getSuggestedItems();
 }

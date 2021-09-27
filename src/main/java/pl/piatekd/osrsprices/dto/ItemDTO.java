@@ -101,4 +101,18 @@ public class ItemDTO {
     public void setBuyLimit(int buyLimit) {
         this.buyLimit = buyLimit;
     }
+
+    @Override
+    public String toString() {
+        return "ItemDTO{" +
+                "name='" + name + '\'' +
+                ", itemHighPrice=" + itemHighPrice +
+                ", itemHighPriceTime='" + itemHighPriceTime + '\'' +
+                ", itemLowPrice=" + itemLowPrice +
+                ", itemLowPriceTime='" + itemLowPriceTime + '\'' +
+                ", margin=" + margin +
+                ", percentageMargin=" + percentageMargin +
+                ", buyLimit=" + buyLimit +
+                '}';
+    }
 }

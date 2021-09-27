@@ -31,16 +31,13 @@ public class ItemRepositoryImpl {
         return entityManager.createQuery(query, ItemDTO.class).setMaxResults(1000).getResultList();
     }
 
-    public ItemDTO getSingleItemByName(String itemName) {
-        String query = "select new pl.piatekd.osrsprices.dto.ItemDTO(ai.name, i.highPrice, i.highPriceTime, i.lowPrice, i.lowPriceTime, i.margin, i.percentageMargin, ai.buyLimit) from Item i join AdditionalInfo ai on (i.id = ai.id) where ai.name like :itemName";
-        List<ItemDTO> singleItemList = entityManager.createQuery(query, ItemDTO.class).setParameter("itemName", itemName).setMaxResults(1).getResultList();
-        ItemDTO item = singleItemList.get(0);
-        return item;
-
-    }
-
     public List<ItemDTO> getHighVolumeItems() {
         String query = "select new pl.piatekd.osrsprices.dto.ItemDTO(ai.name, i.highPrice, i.highPriceTime, i.lowPrice, i.lowPriceTime, i.margin, i.percentageMargin, ai.buyLimit) from Item i join AdditionalInfo ai on (i.id = ai.id) order by ai.buyLimit desc";
+        return entityManager.createQuery(query, ItemDTO.class).setMaxResults(1000).getResultList();
+    }
+
+    public List<ItemDTO> getSuggestedItems() {
+        String query = "select new pl.piatekd.osrsprices.dto.ItemDTO(ai.name, i.highPrice, i.highPriceTime, i.lowPrice, i.lowPriceTime, i.margin, i.percentageMargin, ai.buyLimit) from Item i join AdditionalInfo ai on(i.id = ai.id) join ItemVolume iv on (i.id = iv.id) where (i.margin * ai.buyLimit) > 50000 and iv.volume > (ai.buyLimit * 5)";
         return entityManager.createQuery(query, ItemDTO.class).setMaxResults(1000).getResultList();
     }
 }
