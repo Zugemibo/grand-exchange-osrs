@@ -20,7 +20,7 @@ public class SpringConfig {
     }
 
 
-    @Scheduled(fixedDelay = 120000)
+    @Scheduled(fixedDelay = 300000)
     public void scheduleItemPrices() throws Exception {
         if (enabled) {
             resourceManager.getLatestDataPrices();
