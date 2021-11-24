@@ -14,11 +14,10 @@ public class RestTemplateConfig {
 
     @Bean
     public RestTemplate restTemplate() {
-        RestTemplate restTemplate = new RestTemplateBuilder(rt -> rt.getInterceptors().add((request, body, execution) -> {
+        return new RestTemplateBuilder(rt -> rt.getInterceptors().add((request, body, execution) -> {
             request.getHeaders().add("User-Agent", userAgent);
             return execution.execute(request, body);
         })).build();
-        return restTemplate;
 
     }
 }

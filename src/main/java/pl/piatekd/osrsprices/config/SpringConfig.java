@@ -26,7 +26,7 @@ public class SpringConfig {
             resourceManager.getLatestDataPrices();
         }
     }
-    @Scheduled(fixedDelay = 36000000)
+    @Scheduled(fixedDelay = 300000)
     public void scheduleItemTradeVolumes() throws Exception {
         if (enabled) {
             resourceManager.getLatestDataVolumes();
