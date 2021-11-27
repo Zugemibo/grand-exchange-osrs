@@ -1,7 +1,5 @@
 package pl.piatekd.osrsprices.service.impl;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -51,13 +49,13 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public List<ItemDTO> getItemsWithLargestMargin() {
-        return itemRepositoryImpl.getItemsWithLargestMargin();
+    public List<ItemDTO> getItemsWithLargestMargin(boolean includeMemberItems) {
+        return itemRepositoryImpl.getItemsWithLargestMargin(includeMemberItems);
     }
 
     @Override
-    public List<ItemDTO> getItemsWithLargestPercentageMargin() {
-        return itemRepositoryImpl.getItemsWithLargestPercentageMargin();
+    public List<ItemDTO> getItemsWithLargestPercentageMargin(boolean includeMemberItems) {
+        return itemRepositoryImpl.getItemsWithLargestPercentageMargin(includeMemberItems);
     }
 
     @Override
@@ -71,9 +69,8 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public List<ItemDTO> getSuggestedItems() {
-        return itemRepositoryImpl.getSuggestedItems();
+    public List<ItemDTO> getSuggestedItems(boolean includeMemberItems) {
+        return itemRepositoryImpl.getSuggestedItems(includeMemberItems);
     }
-
 
 }

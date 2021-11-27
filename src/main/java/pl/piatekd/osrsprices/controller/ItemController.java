@@ -34,28 +34,28 @@ public class ItemController {
         }
     }
 
-    @GetMapping("/largestMargin")
-    public List<ItemDTO> getItemsWithLargestMargin() {
+    @GetMapping("/largestMargin/{includeMemberItems}")
+    public List<ItemDTO> getItemsWithLargestMargin(@PathVariable boolean includeMemberItems) {
         try {
-            return itemService.getItemsWithLargestMargin();
+            return itemService.getItemsWithLargestMargin(includeMemberItems);
         } catch (Exception e) {
             throw new ItemNotFoundException();
         }
     }
 
-    @GetMapping("/largestPercentageMargin")
-    public List<ItemDTO> getItemsWithLargestPercentageMargin() {
+    @GetMapping("/largestPercentageMargin/{includeMemberItems}")
+    public List<ItemDTO> getItemsWithLargestPercentageMarginWithoutMembership(@PathVariable boolean includeMemberItems) {
         try {
-            return itemService.getItemsWithLargestPercentageMargin();
+            return itemService.getItemsWithLargestPercentageMargin(includeMemberItems);
         } catch (Exception e) {
             throw new ItemNotFoundException();
         }
     }
 
-    @GetMapping("/suggestedItems")
-    public List<ItemDTO> getSuggestedItems() {
+    @GetMapping("/suggestedItems/{includeMemberItems}")
+    public List<ItemDTO> getSuggestedItemsWithMembership(@PathVariable boolean includeMemberItems) {
         try {
-            return itemService.getSuggestedItems();
+            return itemService.getSuggestedItems(includeMemberItems);
         } catch (Exception e) {
             throw new ItemNotFoundException();
         }

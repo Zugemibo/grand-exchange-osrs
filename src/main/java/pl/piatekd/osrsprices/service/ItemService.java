@@ -3,7 +3,6 @@ package pl.piatekd.osrsprices.service;
 import pl.piatekd.osrsprices.dto.ItemDTO;
 import pl.piatekd.osrsprices.model.Item;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 public interface ItemService {
@@ -18,13 +17,13 @@ public interface ItemService {
 
 	List<ItemDTO> getItemByName(String itemName);
 
-    List<ItemDTO> getItemsWithLargestMargin();
+    List<ItemDTO> getItemsWithLargestMargin(boolean includeMemberItems);
 
-	List<ItemDTO> getItemsWithLargestPercentageMargin();
+	List<ItemDTO> getItemsWithLargestPercentageMargin(boolean includeMemberItems);
 
 	List<ItemDTO> getBestHighAlchItems();
 
     List<ItemDTO> getHighVolumeItems();
 
-	List<ItemDTO> getSuggestedItems();
+	List<ItemDTO> getSuggestedItems(boolean includeMemberItems);
 }
