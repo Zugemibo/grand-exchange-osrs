@@ -17,9 +17,7 @@ public interface ItemService {
 
 	List<ItemDTO> getItemByName(String itemName);
 
-    List<ItemDTO> getItemsWithLargestMargin(boolean includeMemberItems);
-
-	List<ItemDTO> getItemsWithLargestPercentageMargin(boolean includeMemberItems);
+    List<ItemDTO> getItemsWithLargestMargin(boolean nonMemberItemsOnly, boolean isPercentMargin);
 
 	List<ItemDTO> getBestHighAlchItems();
 

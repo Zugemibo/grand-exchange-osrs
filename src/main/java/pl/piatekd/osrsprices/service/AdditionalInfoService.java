@@ -9,7 +9,6 @@ public interface AdditionalInfoService {
 
     void saveAll(List<AdditionalInfo> additionalInfoList);
 
-
     void save(AdditionalInfo additionalInfo);
 
     AdditionalInfo findByWikiName(String name);

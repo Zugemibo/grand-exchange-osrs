@@ -14,6 +14,7 @@ public class HighAlchServiceImpl implements HighAlchService {
 
     private final HighAlchRepositoryImpl highAlchRepositoryImpl;
     private final ItemRepository itemRepository;
+    private final static long NATURE_RUNE_ID = 561L;
 
     public HighAlchServiceImpl(HighAlchRepositoryImpl highAlchRepositoryImpl, ItemRepository itemRepository) {
         this.highAlchRepositoryImpl = highAlchRepositoryImpl;
@@ -27,6 +28,6 @@ public class HighAlchServiceImpl implements HighAlchService {
 
     @Override
     public int getNatureRunePrice() {
-        return itemRepository.getHighPriceById(561L);
+        return itemRepository.getHighPriceById(NATURE_RUNE_ID);
     }
 }

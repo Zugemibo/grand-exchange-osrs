@@ -45,17 +45,16 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public List<ItemDTO> getItemByName(String itemName) {
 
-        return itemRepository.getItemsByName(itemName);
+        return itemRepositoryImpl.getItemsByName(itemName);
     }
 
     @Override
-    public List<ItemDTO> getItemsWithLargestMargin(boolean includeMemberItems) {
-        return itemRepositoryImpl.getItemsWithLargestMargin(includeMemberItems);
-    }
-
-    @Override
-    public List<ItemDTO> getItemsWithLargestPercentageMargin(boolean includeMemberItems) {
-        return itemRepositoryImpl.getItemsWithLargestPercentageMargin(includeMemberItems);
+    public List<ItemDTO> getItemsWithLargestMargin(boolean nonMemberItemsOnly, boolean isPercentMargin) {
+        if (isPercentMargin) {
+            return itemRepositoryImpl.getItemsWithLargestPercentageMargin(nonMemberItemsOnly);
+        } else {
+            return itemRepositoryImpl.getItemsWithLargestMargin(nonMemberItemsOnly);
+        }
     }
 
     @Override

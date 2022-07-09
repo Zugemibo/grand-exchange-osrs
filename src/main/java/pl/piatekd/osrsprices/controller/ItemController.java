@@ -9,6 +9,7 @@ import pl.piatekd.osrsprices.service.ItemService;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 @RestController
 @RequestMapping("/api/v1/item")
@@ -34,29 +35,21 @@ public class ItemController {
         }
     }
 
-    @GetMapping("/largestMargin/{includeMemberItems}")
-    public List<ItemDTO> getItemsWithLargestMargin(@PathVariable boolean includeMemberItems) {
+    @GetMapping("/largestMargin/{nonMemberItemsOnly}/{isPercentMargin}")
+    public List<ItemDTO> getItemsWithLargestMargin(@PathVariable boolean nonMemberItemsOnly, @PathVariable boolean isPercentMargin){
         try {
-            return itemService.getItemsWithLargestMargin(includeMemberItems);
-        } catch (Exception e) {
-            throw new ItemNotFoundException();
-        }
-    }
-
-    @GetMapping("/largestPercentageMargin/{includeMemberItems}")
-    public List<ItemDTO> getItemsWithLargestPercentageMarginWithoutMembership(@PathVariable boolean includeMemberItems) {
-        try {
-            return itemService.getItemsWithLargestPercentageMargin(includeMemberItems);
+            return itemService.getItemsWithLargestMargin(nonMemberItemsOnly, isPercentMargin);
         } catch (Exception e) {
             throw new ItemNotFoundException();
         }
     }
 
     @GetMapping("/suggestedItems/{includeMemberItems}")
-    public List<ItemDTO> getSuggestedItemsWithMembership(@PathVariable boolean includeMemberItems) {
+    public List<ItemDTO> getSuggestedItemsWithMembership(@PathVariable boolean includeMemberItems){
         try {
             return itemService.getSuggestedItems(includeMemberItems);
         } catch (Exception e) {
+//            throw new Exception(e.getMessage());
             throw new ItemNotFoundException();
         }
     }

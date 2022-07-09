@@ -9,15 +9,15 @@ public class ItemVolume {
     @Id
     private Long id;
     private Integer timestamp;
-    private Long volume;
+    private Long dailyTraded;
 
     public ItemVolume() {
     }
 
-    public ItemVolume(Long id, Integer timestamp, Long volume) {
+    public ItemVolume(Long id, Integer timestamp, Long dailyTraded) {
         this.id = id;
         this.timestamp = timestamp;
-        this.volume = volume;
+        this.dailyTraded = dailyTraded;
     }
 
     public Long getId() {
@@ -36,11 +36,11 @@ public class ItemVolume {
         this.timestamp = timestamp;
     }
 
-    public Long getVolume() {
-        return volume;
+    public Long getDailyTraded() {
+        return dailyTraded;
     }
 
-    public void setVolume(Long volume) {
-        this.volume = volume;
+    public void setDailyTraded(Long dailyTraded) {
+        this.dailyTraded = dailyTraded;
     }
 }

@@ -11,13 +11,14 @@ public class ItemDTO {
     private String itemLowPriceTime;
     private long margin;
     private double percentageMargin;
-    private int buyLimit;
-
+    private Object tradeLimit;
+    private boolean members;
+    private Object dailyTraded;
 
     public ItemDTO() {
     }
 
-    public ItemDTO(String name, int itemHighPrice, int itemHighPriceTime, int itemLowPrice, int itemLowPriceTime, long margin, double percentageMargin, int buyLimit) {
+    public ItemDTO(String name, int itemHighPrice, int itemHighPriceTime, int itemLowPrice, int itemLowPriceTime, long margin, double percentageMargin, Integer tradeLimit, boolean members, Long dailyTraded) {
         this.name = name;
         this.itemHighPrice = itemHighPrice;
         this.itemHighPriceTime = TimeConverter.timestampToDate(itemHighPriceTime);
@@ -25,17 +26,9 @@ public class ItemDTO {
         this.itemLowPriceTime = TimeConverter.timestampToDate(itemLowPriceTime);
         this.margin = margin;
         this.percentageMargin = percentageMargin;
-        this.buyLimit = buyLimit;
-    }
-
-    public ItemDTO(String name, int itemHighPrice, int itemHighPriceTime, int itemLowPrice, int itemLowPriceTime, long margin, double percentageMargin) {
-        this.name = name;
-        this.itemHighPrice = itemHighPrice;
-        this.itemHighPriceTime = TimeConverter.timestampToDate(itemHighPriceTime);
-        this.itemLowPrice = itemLowPrice;
-        this.itemLowPriceTime = TimeConverter.timestampToDate(itemLowPriceTime);
-        this.margin = margin;
-        this.percentageMargin = percentageMargin;
+        this.tradeLimit = (tradeLimit != null) ? tradeLimit : "???";
+        this.members = members;
+        this.dailyTraded = (dailyTraded != null) ? dailyTraded : "???";
     }
 
     public String getName() {
@@ -94,25 +87,43 @@ public class ItemDTO {
         this.percentageMargin = percentageMargin;
     }
 
-    public int getBuyLimit() {
-        return buyLimit;
+    public Object getTradeLimit() {
+        return tradeLimit;
     }
 
-    public void setBuyLimit(int buyLimit) {
-        this.buyLimit = buyLimit;
+    public boolean isMembers() {
+        return members;
+    }
+
+    public void setMembers(boolean members) {
+        this.members = members;
+    }
+
+    public void setTradeLimit(Object tradeLimit) {
+        this.tradeLimit = tradeLimit;
+    }
+
+    public Object getDailyTraded() {
+        return dailyTraded;
+    }
+
+    public void setDailyTraded(Object dailyTraded) {
+        this.dailyTraded = dailyTraded;
     }
 
     @Override
     public String toString() {
-        return "ItemDTO{" +
-                "name='" + name + '\'' +
-                ", itemHighPrice=" + itemHighPrice +
-                ", itemHighPriceTime='" + itemHighPriceTime + '\'' +
-                ", itemLowPrice=" + itemLowPrice +
-                ", itemLowPriceTime='" + itemLowPriceTime + '\'' +
-                ", margin=" + margin +
-                ", percentageMargin=" + percentageMargin +
-                ", buyLimit=" + buyLimit +
-                '}';
+        final StringBuilder sb = new StringBuilder("ItemDTO{");
+        sb.append("name='").append(name).append('\'');
+        sb.append(", itemHighPrice=").append(itemHighPrice);
+        sb.append(", itemHighPriceTime='").append(itemHighPriceTime).append('\'');
+        sb.append(", itemLowPrice=").append(itemLowPrice);
+        sb.append(", itemLowPriceTime='").append(itemLowPriceTime).append('\'');
+        sb.append(", margin=").append(margin);
+        sb.append(", percentageMargin=").append(percentageMargin);
+        sb.append(", tradeLimit=").append(tradeLimit);
+        sb.append(", members=").append(members);
+        sb.append('}');
+        return sb.toString();
     }
 }

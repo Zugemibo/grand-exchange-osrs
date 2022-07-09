@@ -1,11 +1,10 @@
 package pl.piatekd.osrsprices.model;
 
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.persistence.*;
-import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 public class AdditionalInfo {
@@ -17,8 +16,6 @@ public class AdditionalInfo {
     private String name;
     @JsonProperty("members")
     private boolean members;
-    @JsonProperty("tradeable")
-    private boolean tradeable;
     @JsonProperty("tradeable_on_ge")
     private boolean tradeableOnGe;
     @JsonProperty("stackable")
@@ -29,75 +26,31 @@ public class AdditionalInfo {
     private boolean noteable;
     @JsonProperty("equipable")
     private boolean equipable;
-    @JsonProperty("equipable_by_player")
-    private boolean equipableByPlayer;
-    @JsonProperty("equipable_weapon")
-    private boolean equipableWeapon;
     @JsonProperty("cost")
     private int cost;
-    @JsonProperty("lowalch")
+    @JsonProperty("low_alch")
     private int lowAlch;
-    @JsonProperty("highalch")
+    @JsonProperty("high_alch")
     private int highAlch;
-    @JsonProperty("weight")
-    private int weight;
-    @JsonProperty("buy_limit")
-    private int buyLimit;
-    @JsonProperty("quest_item")
-    private boolean questItem;
-    @JsonProperty("release_date")
-    private Date releaseDate;
-    @JsonProperty("duplicate")
-    private boolean duplicate;
-    @JsonProperty("examine")
-    private String description;
-    @JsonProperty("wiki_name")
-    private String wikiName;
-    @JsonProperty("wiki_url")
-    private String wikiUrl;
-    @JsonProperty("icon")
-    @Lob
-    @Column(name = "icon", columnDefinition="BLOB")
-    private byte[] icon;
-//    @OneToOne(mappedBy = "additionalInfo", cascade = CascadeType.ALL,
-//            fetch = FetchType.LAZY, optional = false)
-//    @JsonManagedReference
-//    private Item item;
+    @JsonProperty("trade_limit")
+    private int tradeLimit;
 
-//    public Item getItem() {
-//        return item;
-//    }
-//
-//    public void setItem(Item item) {
-//        this.item = item;
-//    }
 
-    public AdditionalInfo(Long id, boolean members, boolean tradeable, boolean tradeableOnGe, boolean stackable, boolean noted, boolean noteable, boolean equipable, boolean equipableByPlayer, boolean equipableWeapon, int cost, int lowAlch, int highAlch, int weight, int buyLimit, boolean questItem, Date releaseDate, boolean duplicate, String description, String wikiName, String wikiUrl, byte[] icon) {
+    public AdditionalInfo() {
+    }
+
+    public AdditionalInfo(Long id, String name, boolean members, boolean tradeableOnGe, boolean stackable, boolean noted, boolean noteable, boolean equipable, int cost, int lowAlch, int highAlch) {
         this.id = id;
+        this.name = name;
         this.members = members;
-        this.tradeable = tradeable;
         this.tradeableOnGe = tradeableOnGe;
         this.stackable = stackable;
         this.noted = noted;
         this.noteable = noteable;
         this.equipable = equipable;
-        this.equipableByPlayer = equipableByPlayer;
-        this.equipableWeapon = equipableWeapon;
         this.cost = cost;
         this.lowAlch = lowAlch;
         this.highAlch = highAlch;
-        this.weight = weight;
-        this.buyLimit = buyLimit;
-        this.questItem = questItem;
-        this.releaseDate = releaseDate;
-        this.duplicate = duplicate;
-        this.description = description;
-        this.wikiName = wikiName;
-        this.wikiUrl = wikiUrl;
-        this.icon = icon;
-    }
-
-    public AdditionalInfo() {
     }
 
     public Long getId() {
@@ -108,20 +61,20 @@ public class AdditionalInfo {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public boolean isMembers() {
         return members;
     }
 
     public void setMembers(boolean members) {
         this.members = members;
-    }
-
-    public boolean isTradeable() {
-        return tradeable;
-    }
-
-    public void setTradeable(boolean tradeable) {
-        this.tradeable = tradeable;
     }
 
     public boolean isTradeableOnGe() {
@@ -164,22 +117,6 @@ public class AdditionalInfo {
         this.equipable = equipable;
     }
 
-    public boolean isEquipableByPlayer() {
-        return equipableByPlayer;
-    }
-
-    public void setEquipableByPlayer(boolean equipableByPlayer) {
-        this.equipableByPlayer = equipableByPlayer;
-    }
-
-    public boolean isEquipableWeapon() {
-        return equipableWeapon;
-    }
-
-    public void setEquipableWeapon(boolean equipableWeapon) {
-        this.equipableWeapon = equipableWeapon;
-    }
-
     public int getCost() {
         return cost;
     }
@@ -204,112 +141,20 @@ public class AdditionalInfo {
         this.highAlch = highAlch;
     }
 
-    public int getWeight() {
-        return weight;
-    }
-
-    public void setWeight(int weight) {
-        this.weight = weight;
-    }
-
-    public int getBuyLimit() {
-        return buyLimit;
-    }
-
-    public void setBuyLimit(int buyLimit) {
-        this.buyLimit = buyLimit;
-    }
-
-    public boolean isQuestItem() {
-        return questItem;
-    }
-
-    public void setQuestItem(boolean questItem) {
-        this.questItem = questItem;
-    }
-
-    public Date getReleaseDate() {
-        return releaseDate;
-    }
-
-    public void setReleaseDate(Date releaseDate) {
-        this.releaseDate = releaseDate;
-    }
-
-    public boolean isDuplicate() {
-        return duplicate;
-    }
-
-    public void setDuplicate(boolean duplicate) {
-        this.duplicate = duplicate;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getWikiName() {
-        return wikiName;
-    }
-
-    public void setWikiName(String wikiName) {
-        this.wikiName = wikiName;
-    }
-
-    public String getWikiUrl() {
-        return wikiUrl;
-    }
-
-    public void setWikiUrl(String wikiUrl) {
-        this.wikiUrl = wikiUrl;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public byte[] getIcon() {
-        return icon;
-    }
-
-    public void setIcon(byte[] icon) {
-        this.icon = icon;
-    }
-
     @Override
     public String toString() {
         return "AdditionalInfo{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", members=" + members +
-                ", tradeable=" + tradeable +
                 ", tradeableOnGe=" + tradeableOnGe +
                 ", stackable=" + stackable +
                 ", noted=" + noted +
                 ", noteable=" + noteable +
                 ", equipable=" + equipable +
-                ", equipableByPlayer=" + equipableByPlayer +
-                ", equipableWeapon=" + equipableWeapon +
                 ", cost=" + cost +
                 ", lowAlch=" + lowAlch +
                 ", highAlch=" + highAlch +
-                ", weight=" + weight +
-                ", buyLimit=" + buyLimit +
-                ", questItem=" + questItem +
-                ", releaseDate=" + releaseDate +
-                ", duplicate=" + duplicate +
-                ", description='" + description + '\'' +
-                ", wikiName='" + wikiName + '\'' +
-                ", wikiUrl='" + wikiUrl + '\'' +
-                ", icon='" + icon + '\'' +
                 '}';
     }
 }

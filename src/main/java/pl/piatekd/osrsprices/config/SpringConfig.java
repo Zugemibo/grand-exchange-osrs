@@ -10,8 +10,11 @@ import pl.piatekd.osrsprices.util.ResourceManager;
 @EnableScheduling
 public class SpringConfig {
 
-    @Value("${cron.enabled}")
-    private boolean enabled;
+    @Value("${cron.itemTradeVolumes.enabled}")
+    private boolean itemtradeVolumesEnabled;
+
+    @Value("${cron.itemPrices.enabled}")
+    private boolean itemPricesEnabled;
 
     private final ResourceManager resourceManager;
 
@@ -20,15 +23,16 @@ public class SpringConfig {
     }
 
 
-    @Scheduled(fixedDelay = 300000)
+    @Scheduled(fixedDelayString = "${cron.itemPrices.interval}")
     public void scheduleItemPrices() throws Exception {
-        if (enabled) {
+        if (itemPricesEnabled) {
             resourceManager.getLatestDataPrices();
         }
     }
-    @Scheduled(fixedDelay = 300000)
+
+    @Scheduled(fixedDelayString = "${cron.itemTradeVolumes.interval}")
     public void scheduleItemTradeVolumes() throws Exception {
-        if (enabled) {
+        if (itemtradeVolumesEnabled) {
             resourceManager.getLatestDataVolumes();
         }
     }
